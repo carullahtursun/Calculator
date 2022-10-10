@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,56 @@
     <title>Calculater</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
+
+    
+    <style type="text/css">
+        .time-frame {
+            margin-bottom: 40px;
+            color: rgb(0, 0, 0);
+            width: auto;
+            min-width: 160px;
+            font-family: Arial;
+            margin: 0 auto;
+            display: table;
+            padding: 10px 10px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .time-frame>div {
+            width: 100%;
+            text-align: center;
+        }
+
+        #tarih-bolumu {
+            font-size: 18px;
+            color: #000000;
+        }
+
+        #saat-bolumu {
+            font-size: 50px;
+            line-height: 30px;
+            margin-top: 5px;
+        }
+    </style>
+
     <div class="calculater">
+        <div class='time-frame'>
+            <div id='tarih-bolumu'></div>
+            <div id='saat-bolumu'></div>
+        </div>
         <input type="text" class="calculater-input" value="0" disabled>
-        <div class="calculater-keys" >
+        <div class="calculater-keys">
             <button type="button" class="operator" value="+">+</button>
             <button type="button" class="operator" value="-">-</button>
             <button type="button" class="operator" value="*">&times;</button>
             <button type="button" class="operator" value="/">&div;</button>
-            
 
-           
+
+
             <button type="button" value="7">7</button>
             <button type="button" value="8">8</button>
             <button type="button" value="9">9</button>
@@ -34,12 +74,26 @@
             <button type="button" value="." class="decimal">.</button>
             <button type="button" value="clear" class="clear">AC</button>
 
-            <button type="button"  value="=" class="equal-sign operator">=</button>
+            <button type="button" value="=" class="equal-sign operator">=</button>
 
 
         </div>
     </div>
 
-    <script src="./js/main.js" ></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(document).ready(function () {
+                var interval = setInterval(function () {
+                    var momentNow = moment();
+                    $('#tarih-bolumu').html(momentNow.format('DD.MM.YYYY'));
+                    $('#saat-bolumu').html(momentNow.format('hh:mm:ss'));
+                }, 100);
+            });
+        });
+    </script>
+    <script src="./js/main.js"></script>
 </body>
+
 </html>
